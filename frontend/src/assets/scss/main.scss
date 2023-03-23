@@ -1,0 +1,16 @@
+.illustrations {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 25px;
+}
+
+.illustration {
+    width: 25%;
+
+    div svg {
+        height: unset !important;
+        width: 100% !important;
+    }
+}

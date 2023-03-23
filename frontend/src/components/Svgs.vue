@@ -1,37 +1,40 @@
 <template>
-  <div>
-    <div class="illustration-box"></div>
+  <div class="container illustrations">
+    <div v-for="svgItem in svgArray" class="illustration" v-bind:key="svgItem.id">
+      <div v-html="svgItem.svg"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted } from "vue";
 
 export default {
   setup() {
-    var state = reactive({
-      svgs: {},
-    });
+    var svgArray = reactive([
+      {
+        svg: null
+      }
+    ]);
 
-    function GetAll() {
-      fetch('http://localhost:3000/svgs')
-        .then((res) => res.json())
-        .then((data) => {
-          state.svgs = data;
-        });
+    var svgColorTags;
+
+    async function GetAll() {
+      const res = await fetch("http://localhost:3000/svgs");
+      const data = await res.json();
+      svgArray.pop()
+      for(const item of data) {
+        svgArray.push(item)
+      }
     }
 
     GetAll();
 
-    console.log(typeof state);
-    console.log(state.svgs[0].svg);
-
-    onMounted(() => {
-      var illustrationBox = document.querySelector('.illustration-box');
-      //   illustrationBox.innerHTML = state.svgs[0].svg;
-    });
-
-    return { state, GetAll };
+    function getColorTags() {
+      
+    }
+    
+    return { svgArray, GetAll, svgColorTags };
   },
 };
 </script>

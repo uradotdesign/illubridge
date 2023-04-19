@@ -7,33 +7,31 @@
 </template>
 
 <script>
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted } from 'vue';
 
 export default {
   setup() {
     var svgArray = reactive([
       {
-        svg: null
-      }
+        svg: null,
+      },
     ]);
 
     var svgColorTags;
 
     async function GetAll() {
-      const res = await fetch("http://localhost:3000/svgs");
+      const res = await fetch('http://localhost:3000/svgs');
       const data = await res.json();
-      svgArray.pop()
-      for(const item of data) {
-        svgArray.push(item)
+      svgArray.pop();
+      for (const item of data) {
+        svgArray.push(item);
       }
     }
 
     GetAll();
 
-    function getColorTags() {
-      
-    }
-    
+    function getColorTags() {}
+
     return { svgArray, GetAll, svgColorTags };
   },
 };

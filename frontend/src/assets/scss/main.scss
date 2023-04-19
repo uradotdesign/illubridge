@@ -1,16 +1,108 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: sticky;
+    top: 0;
+    width: 100%;
+
+    .navigation,
+    .filter-tab {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navigation {
+        background-color: #ebebeb;
+        width: calc(100% - 60px);
+        padding: 20px 30px;
+    }
+
+    .filter-tab {
+        width: calc(100% - 60px);
+        padding: 20px 30px;
+        background-color: #f7f5f5;
+        justify-content: flex-end;
+    }
+
+    #search-bar {
+        padding: 10px 5px;
+        outline: none;
+        border: none;
+    }
+}
+
+.filter-tab {
+    .color-picker-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        background-color: white;
+        padding: 5px;
+        border-radius: 2px;
+        cursor: pointer;
+
+        .color-box {
+            pointer-events: none;
+            width: 20px;
+            height: 20px;
+            background-color: #10b981;
+        }
+
+        .color-code {
+            pointer-events: none;
+        }
+    }
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(100% - 60px);
+    padding: 0 30px;
+}
+
 .illustrations {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 100%;
+    margin: 30px 0;
+    flex-wrap: wrap;
     gap: 25px;
 }
 
 .illustration {
-    width: 25%;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    width: calc(25% - 21px);
 
-    div svg {
-        height: unset !important;
-        width: 100% !important;
+    &:first-child {
+        border: 1px solid #10b981;
     }
+
+    div {
+        width: 100%;
+        border-radius: 10px;
+
+        svg {
+            border-radius: 10px;
+            height: unset !important;
+            width: 100% !important;
+        }
+    }
+}
+
+.selected-svgs-container {
+    background-color: #f7f5f5;
 }

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <Svgs />
+    <div class="selected-svgs-container"></div>
   </div>
 </template>
 

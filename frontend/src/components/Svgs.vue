@@ -1,8 +1,15 @@
 <template>
-  <div class="container illustrations">
-    <div v-for="svgItem in svgArray" class="illustration" v-bind:key="svgItem.id">
-      <div v-html="svgItem.svg"></div>
+  <div class="container">
+    <div class="container illustrations">
+      <div
+        v-for="svgItem in svgArray"
+        class="illustration"
+        v-bind:key="svgItem.id"
+      >
+        <div v-html="svgItem.svg"></div>
+      </div>
     </div>
+    <div id="picker"></div>
   </div>
 </template>
 
@@ -13,8 +20,8 @@ export default {
   setup() {
     var svgArray = reactive([
       {
-        svg: null
-      }
+        svg: null,
+      },
     ]);
 
     var svgColorTags;
@@ -22,18 +29,20 @@ export default {
     async function GetAll() {
       const res = await fetch("http://localhost:3000/svgs");
       const data = await res.json();
-      svgArray.pop()
-      for(const item of data) {
-        svgArray.push(item)
+      svgArray.pop();
+      for (const item of data) {
+        svgArray.push(item);
       }
     }
 
     GetAll();
 
-    function getColorTags() {
-      
-    }
-    
+    function getColorTags() {}
+
+    onMounted(() => {
+
+    })
+
     return { svgArray, GetAll, svgColorTags };
   },
 };
